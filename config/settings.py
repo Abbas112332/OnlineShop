@@ -1,6 +1,6 @@
 from pathlib import Path
 from environs import Env
-
+import os
 # for environment variable
 env = Env()
 env.read_env()
@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     # local apps
     'accounts.apps.AccountsConfig',
     'pages.apps.PagesConfig',
+    'products.apps.ProductsConfig',
     # third apps
     'crispy_forms',
     'allauth',
@@ -133,6 +134,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
