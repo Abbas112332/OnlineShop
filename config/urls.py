@@ -6,5 +6,10 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('accounts/', include('allauth.urls')),
     path('products/', include('products.urls')),
+    # rosetta
+    path('rosetta/', include('rosetta.urls')),
 ]
+
+
+
 
