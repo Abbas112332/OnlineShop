@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'rosetta',
     'jalali_date',
+    'ckeditor',
 
     # local apps
     'accounts.apps.AccountsConfig',
@@ -147,7 +148,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -177,5 +178,3 @@ ACCOUNT_UNIQUE_EMAIL = True
 MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
-
-
