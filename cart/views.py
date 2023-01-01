@@ -3,6 +3,7 @@ from django.views.decorators.http import require_POST
 from products.models import Product
 from .cart import Cart
 from .forms import AddToCartProductForm
+from django.contrib import messages
 
 
 def cart_detail_view(request):
@@ -28,8 +29,21 @@ def add_to_cart_view(request, product_id):
     return redirect('cart:cart_detail')
 
 
+@require_POST
 def remove_from_cart(request, product_id):
     cart = Cart(request)
     product = get_object_or_404(Product, id=product_id)
     cart.remove(product)
     return redirect('cart:cart_detail')
+
+
+def clear_cart(request):
+    cart = Cart(request)
+
+    if len(cart):
+        cart.clear()
+        messages.success(request, 'سبد خرید شما خالی گردید ')
+    else:
+        messages.warning(request, 'سبد خرید شما خالی هست ')
+
+    return redirect('product_list')
